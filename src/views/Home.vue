@@ -32,11 +32,16 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    await getNewsFeed().then((value) => {
-      this.isLoading = false;
-      console.log(value.articles);
-      this.items = value.articles;
-    });
+    await getNewsFeed()
+      .then((value) => {
+        this.isLoading = false;
+        console.log(value.articles);
+        this.items = value.articles;
+      })
+      .catch((err) => {
+        this.isLoading = false;
+        console.log(err);
+      });
   },
 };
 </script>
