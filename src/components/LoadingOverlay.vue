@@ -1,13 +1,13 @@
 <template>
-  <div v-if="isVisible" class="loader-overlay">
-    <v-layout fill-height="100" row justify-center align-content-center>
+  <div v-if="isVisible">
+    <v-overlay :value="overlay">
       <v-progress-circular
-        :size="70"
-        :width="5"
         color="primary"
         indeterminate
+        width="6"
+        size="64"
       ></v-progress-circular>
-    </v-layout>
+    </v-overlay>
   </div>
 </template>
 
