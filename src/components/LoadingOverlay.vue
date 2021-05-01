@@ -1,6 +1,6 @@
 <template>
   <div v-if="isVisible">
-    <v-overlay :value="overlay">
+    <v-overlay :value="isVisible">
       <v-progress-circular
         color="primary"
         indeterminate
@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'LoaderOverlay',
+  data() {
+    return {
+      overlay: false,
+    };
+  },
   props: {
     isVisible: { type: Boolean, required: true },
   },
