@@ -23,3 +23,23 @@ export async function getAllStudents() {
     throw err.response.data.statusMessage;
   }
 }
+export async function createStudent(data) {
+  try {
+    const response = await axios({
+      method: 'post',
+      url: `${baseUrl}/custom/student/create`,
+      data: data,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (err) {
+    throw err.response.data.statusMessage;
+  }
+}
