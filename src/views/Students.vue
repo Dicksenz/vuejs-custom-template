@@ -115,39 +115,8 @@
       </v-row>
     </v-layout>
 
-    <v-container class="grey lighten-5" fluid>
-      <v-row no-gutters>
-        <v-col
-          class="mb-4 mr-4"
-          v-for="(data, i) in dataList"
-          :key="i"
-          cols="12"
-          sm="3"
-        >
-          <v-card class="pa-2" elevation="5">
-            <v-list two-line>
-              <v-list-item>
-                <v-list-item-avatar>
-                  <v-img
-                    :alt="`${data.first_name} avatar`"
-                    src="@/assets/boy_avatar.png"
-                  ></v-img>
-                </v-list-item-avatar>
-                <v-list-item-content>
-                  <v-list-item-title
-                    >{{ data.first_name }}
-                    {{ data.last_name }}</v-list-item-title
-                  >
-                  <v-list-item-subtitle class="grey--text">
-                    Grade {{ data.grade_id }}</v-list-item-subtitle
-                  >
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+    <StudentCard :dataList="dataList"></StudentCard>
+
     <v-snackbar v-model="snackbar" :timeout="timeout">
       {{ apiMessage }}
 
@@ -163,6 +132,7 @@
 <script>
 import { getAllStudents, createStudent } from '../services/studentService';
 import LoaderOverlay from '@/components/LoadingOverlay';
+import StudentCard from '@/components/StudentCard';
 import { format } from 'date-fns';
 
 import {
@@ -175,6 +145,7 @@ import {
 export default {
   components: {
     LoaderOverlay,
+    StudentCard,
   },
 
   data() {
