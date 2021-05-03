@@ -27,6 +27,14 @@
           </v-list-item>
         </v-list-item-group>
       </v-list>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn class="primary white--text" block to="/login"
+            ><v-icon left>mdi-logout</v-icon>
+            Logout
+          </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" dark>
@@ -40,6 +48,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Elearning</v-toolbar-title>
+      <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-main>
