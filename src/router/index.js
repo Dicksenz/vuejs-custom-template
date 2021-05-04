@@ -36,19 +36,19 @@ const routes = [
     path: '/students',
     name: 'Students',
     component: Students,
-    meta: { layout: MainLayout },
+    meta: { layout: MainLayout, requiresAuth: true },
   },
   {
     path: '/my-courses',
     name: 'MyCourses',
     component: MyCourses,
-    meta: { layout: MainLayout },
+    meta: { layout: MainLayout, guest: true },
   },
   {
     path: '/all-courses',
     name: 'AllCourses',
     component: AllCourses,
-    meta: { layout: MainLayout },
+    meta: { layout: MainLayout, is_admin: true },
   },
 ];
 
@@ -56,6 +56,35 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (localStorage.getItem('jwt') == null) {
+      next({
+        path: '/login',
+        params: { nextUrl: to.fullPath },
+      });
+    } else {
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (to.matched.some((record) => record.meta.is_admin)) {
+        if (user.is_admin == 1) {
+          next();
+        } else {
+          next({ name: 'userboard' });
+        }
+      } else {
+        next();
+      }
+    }
+  } else if (to.matched.some((record) => record.meta.guest)) {
+    if (localStorage.getItem('jwt') == null) {
+      next();
+    } else {
+      next({ name: 'userboard' });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
