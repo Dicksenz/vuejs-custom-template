@@ -10,7 +10,11 @@ export default new Vuex.Store({
     test: 'testvalue',
     user: {},
   },
-  mutations: {},
+  mutations: {
+    saveToken: (state, token) => {
+      state.token = token;
+    },
+  },
 
   getters: {
     isLoggedIn: (state) => !!state.token,

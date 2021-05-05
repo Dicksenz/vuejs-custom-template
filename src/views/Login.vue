@@ -95,6 +95,7 @@ export default {
             console.log(value.data);
             if (value.data.statusCode == 200) {
               localStorage.setItem('token', value.data.data.token);
+              this.$store.commit('saveToken', value.data.data.token);
               this.$router.push('/');
             } else {
               this.isLoading = false;

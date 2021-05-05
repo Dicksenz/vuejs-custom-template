@@ -1,8 +1,6 @@
 import axios from 'axios';
-
-const baseUrl = 'http://vticket.telecom.mu:8055';
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpY2tzZW5yYXlkZW5AZ21haWwuY29tIiwiaWF0IjoxNjE5Njc1MzI0LCJleHAiOjE2NTEyMTEzMjR9.9IEHVQ6Ch157fbMdUqK0WyiJCnhriZSsjCDIpvQx0qY';
+import { BASE_URL } from '../helpers';
+const baseUrl = BASE_URL;
 
 export async function login(data) {
   try {
@@ -13,7 +11,6 @@ export async function login(data) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `bearer ${token}`,
       },
     });
 

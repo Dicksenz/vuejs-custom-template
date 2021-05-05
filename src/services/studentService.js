@@ -1,8 +1,10 @@
 import axios from 'axios';
 import token from '../services/baseService';
-const baseUrl = 'http://vticket.telecom.mu:8055';
+import { BASE_URL } from '../helpers';
+const baseUrl = BASE_URL;
 
 export async function getAllStudents() {
+  console.log('token', token);
   try {
     const response = await axios({
       method: 'get',
