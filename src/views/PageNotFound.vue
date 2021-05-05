@@ -4,11 +4,10 @@
       <v-card
         height="100%"
         class="d-flex flex-column justify-center align-center"
-        :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
         flat
         tile
       >
-        <div id="title" class="6rem font-weight-bold">404</div>
+        <lottie-animation path="404.json" :width="400" :height="400" />
         <div id="subtitle" class="grey--text">Page not found</div>
       </v-card>
     </v-app>
@@ -16,7 +15,9 @@
 </template>
 
 <script>
-export default { name: 'PageNotFound' };
+export default {
+  name: 'PageNotFound',
+};
 </script>
 
 <style lang="sass">
