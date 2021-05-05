@@ -72,6 +72,12 @@ export default {
     };
   },
 
+  computed: {
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
+
   methods: {
     async submitForm() {
       this.isLoading = true;
@@ -87,9 +93,9 @@ export default {
           .then((value) => {
             this.isLoading = false;
             console.log(value.data);
-
             if (value.data.statusCode == 200) {
-              console.log(value);
+              localStorage.setItem('token', value.data.data.token);
+              this.$router.push('/');
             } else {
               this.isLoading = false;
               this.hasError = true;

@@ -200,7 +200,6 @@ export default {
 
   async created() {
     this.isLoading = true;
-
     await getAllStudents()
       .then((value) => {
         this.isLoading = false;

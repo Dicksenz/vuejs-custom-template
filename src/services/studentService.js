@@ -1,8 +1,6 @@
 import axios from 'axios';
-
+import token from '../services/baseService';
 const baseUrl = 'http://vticket.telecom.mu:8055';
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpY2tzZW5yYXlkZW5AZ21haWwuY29tIiwiaWF0IjoxNjE5Njc1MzI0LCJleHAiOjE2NTEyMTEzMjR9.9IEHVQ6Ch157fbMdUqK0WyiJCnhriZSsjCDIpvQx0qY';
 
 export async function getAllStudents() {
   try {
@@ -24,6 +22,7 @@ export async function getAllStudents() {
   }
 }
 export async function createStudent(data) {
+  var token = this.$store.token;
   try {
     const response = await axios({
       method: 'post',
